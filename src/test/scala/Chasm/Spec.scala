@@ -6,7 +6,7 @@ import org.scalatest.{FlatSpec, Matchers}
 class Spec extends FlatSpec with Matchers {
 
   it should "do on of those things: SPEED, JUMP, SLOW, WAIT" in {
-    assertPossibleValues(List("SPEED", "JUMP", "SLOW", "WAIT"), nextAction(1, 1, 5, 2))
+    Some(nextAction(1, 1, 5, 2)) should contain oneOf("SPEED", "JUMP", "SLOW", "WAIT")
   }
 
   it should "JUMP at the end of the bridge" in {
@@ -35,10 +35,6 @@ class Spec extends FlatSpec with Matchers {
 
   it should "get the speed as the gap length + 1 if the bridge fits" in {
     calculateEnoughSpeed(3, 15) should be(4)
-  }
-
-  def assertPossibleValues(values: List[String], actual: String): Unit = {
-    values should contain(actual)
   }
 
 }

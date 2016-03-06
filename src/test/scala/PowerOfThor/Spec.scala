@@ -6,31 +6,31 @@ import org.scalatest.{FlatSpec, Matchers}
 class Spec extends FlatSpec with Matchers {
 
   it should "move to one the 8 directions: N NE E SE S SW W NW" in {
-    assertPossibleValues(List("N", "NE", "E", "SE", "S", "SW", "W", "NW"), nextMove(0, 0, 39, 17))
+    Some(nextMove(0, 0, 39, 17)) should contain oneOf("N", "NE", "E", "SE", "S", "SW", "W", "NW")
   }
 
   it should "move towards N if the light is on the top" in {
-    assertPossibleValues(List("NE", "N", "NW"), nextMove(10, 10, 10, 0))
+    Some(nextMove(10, 10, 10, 0)) should contain oneOf("NE", "N", "NW")
   }
 
   it should "move towards S if the light is on the bottom" in {
-    assertPossibleValues(List("SE", "S", "SW"), nextMove(10, 10, 10, 20))
+    Some(nextMove(10, 10, 10, 20)) should contain oneOf("SE", "S", "SW")
   }
 
   it should "move towards E if the light is on the right" in {
-    assertPossibleValues(List("NE", "E", "SE"), nextMove(10, 10, 20, 10))
+    Some(nextMove(10, 10, 20, 10)) should contain oneOf("NE", "E", "SE")
   }
 
   it should "move towards W if the light is on the left" in {
-    assertPossibleValues(List("W", "SW", "NW"), nextMove(10, 10, 0, 10))
+    Some(nextMove(10, 10, 0, 10)) should contain oneOf("W", "SW", "NW")
   }
 
   it should "move towards SW if the light is on the SW" in {
-    assertPossibleValues(List("SW"), nextMove(10, 10, 0, 20))
+    nextMove(10, 10, 0, 20) should be("SW")
   }
 
   it should "move towards NE if the light is on the NE" in {
-    assertPossibleValues(List("NE"), nextMove(10, 10, 20, 0))
+    nextMove(10, 10, 20, 0) should be("NE")
   }
 
   it should "reduce y if moving towards N" in {
@@ -61,10 +61,6 @@ class Spec extends FlatSpec with Matchers {
   it should "keep y if moving towards E or W" in {
     deltaY("E") should be(0)
     deltaY("W") should be(0)
-  }
-
-  def assertPossibleValues(values: List[String], actual: String): Unit = {
-    values should contain(actual)
   }
 
 }
