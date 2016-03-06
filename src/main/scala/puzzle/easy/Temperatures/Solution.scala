@@ -1,4 +1,4 @@
-package Temperatures
+package puzzle.easy.Temperatures
 
 import scala.math._
 import scala.util._

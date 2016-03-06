@@ -1,7 +1,7 @@
-package Temperatures
+package puzzle.easy.Temperatures
 
-import Temperatures.Solution.calculateClosest
 import org.scalatest.{FlatSpec, Matchers}
+import puzzle.easy.Temperatures.Solution.calculateClosest
 
 import scala.math._
 import scala.util._

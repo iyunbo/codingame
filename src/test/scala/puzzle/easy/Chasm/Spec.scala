@@ -1,7 +1,7 @@
-package Chasm
+package puzzle.easy.Chasm
 
-import Chasm.Player.{calculateEnoughSpeed, nextAction}
 import org.scalatest.{FlatSpec, Matchers}
+import puzzle.easy.Chasm.Player.{calculateEnoughSpeed, nextAction}
 
 class Spec extends FlatSpec with Matchers {
 

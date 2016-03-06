@@ -1,4 +1,4 @@
-package Chasm
+package puzzle.easy.Chasm
 
 import scala.math._
 import scala.util._

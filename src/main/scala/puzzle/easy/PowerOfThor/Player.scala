@@ -1,4 +1,4 @@
-package PowerOfThor
+package puzzle.easy.PowerOfThor
 
 import scala.math._
 import scala.util._

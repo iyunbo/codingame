@@ -1,7 +1,7 @@
-package PowerOfThor
+package puzzle.easy.PowerOfThor
 
-import PowerOfThor.Player.{deltaX, deltaY, nextMove}
 import org.scalatest.{FlatSpec, Matchers}
+import puzzle.easy.PowerOfThor.Player.{deltaX, deltaY, nextMove}
 
 class Spec extends FlatSpec with Matchers {
 
