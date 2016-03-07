@@ -13,22 +13,16 @@ object Solution extends App {
     referenceLine.slice(index * lineWidth, index * lineWidth + lineWidth).reduce(_ + _)
   }
 
-  def toLine(sLine: String): List[String] = {
+  def toList(row: String): List[String] = {
     val line = ListBuffer[String]()
-    for (i <- 0 until sLine.length) {
-      line += sLine.charAt(i).toString
+    for (i <- 0 until row.length) {
+      line += row.charAt(i).toString
     }
     line.toList
   }
 
-  def toData(asciiString: String, h: Int) = {
-    val asciiArtTable = ListBuffer[List[String]]()
-    val stringArray = asciiString.split("\n")
-    for (i <- 0 until h) {
-      val line = toLine(stringArray(i))
-      asciiArtTable += line
-    }
-    asciiArtTable.toList
+  def charIndex(char: Char): Int = {
+    if (char.toInt >= 'A'.toInt && char.toInt <= 'Z'.toInt) char.toInt - 'A'.toInt else 'Z'.toInt - 'A'.toInt + 1
   }
 
   val l = readInt
@@ -37,17 +31,12 @@ object Solution extends App {
   val answer = new StringBuilder()
   for (i <- 0 until h) {
     val row = readLine
-    val line = toLine(row)
+    val line = toList(row)
     answer ++= t.toUpperCase.map(char => toAsciiArtLine(line, charIndex(char), i, l)).reduce(_ + _)
     answer ++= "\n"
   }
 
   // Write an action using println
   // To debug: Console.err.println("Debug messages...")
-
-  def charIndex(char: Char): Int = {
-    if (char.toInt >= 'A'.toInt && char.toInt <= 'Z'.toInt) char.toInt - 'A'.toInt else 'Z'.toInt - 'A'.toInt + 1
-  }
-
   println(answer)
 }
